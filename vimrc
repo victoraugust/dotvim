@@ -11,14 +11,19 @@ set ignorecase
 set smartcase
 
 " line numbers
-:set number relativenumber
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
+set number relativenumber
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
-" setup pathogen
+" 80-column rule, select the line `v`, and `gq`
+set textwidth=80
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" pathogen
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 " curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
