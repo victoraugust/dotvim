@@ -1,3 +1,23 @@
+" automatically reload .vimrc
+autocmd! bufwritepost .vimrc source %
+
+" rebind <leader> key
+let mapleader = "<space>"
+
+" better search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" line numbers
+:set number relativenumber
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
 " setup pathogen
 " mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 " curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
