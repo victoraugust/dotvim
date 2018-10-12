@@ -1,8 +1,14 @@
-" automatically reload .vimrc
-autocmd! bufwritepost .vimrc source %
+" vim-plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call plug#begin('~/.vim/plugged')
+" https://github.com/lervag/vimtex
+Plug 'lervag/vimtex'
+call plug#end()
 
 " rebind <leader> key
-let mapleader = "<space>"
+let mapleader = "\<Space>"
+let maplocalleader = "\<Space>"
 
 " better search
 set hlsearch
@@ -23,16 +29,9 @@ set textwidth=80
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-" pathogen
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-execute pathogen#infect()
-
 " Enable syntax highlighting
 syntax on
 filetype plugin indent on
 
-" vim-latex-live-preview settings
-autocmd Filetype tex setl updatetime=1
-let g:livepreview_previewer = 'open -a Preview'
+" LaTeX
+let g:vimtex_view_method = 'skim'
