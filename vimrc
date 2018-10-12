@@ -4,6 +4,11 @@
 call plug#begin('~/.vim/plugged')
 " https://github.com/lervag/vimtex
 Plug 'lervag/vimtex'
+" https://github.com/vim-airline/vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" https://github.com/edkolev/tmuxline.vim
+Plug 'edkolev/tmuxline.vim'
 call plug#end()
 
 " rebind <leader> key
@@ -30,3 +35,14 @@ filetype plugin indent on
 
 " LaTeX
 let g:vimtex_view_method = 'skim'
+
+" Status Line
+" git clone git@github.com:powerline/fonts.git && cd fonts && ./install.sh
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='light'
+let g:airline#extensions#tabline#enabled=1 "allow showing tab
+let g:airline#extensions#tabline#buffer_min_count=2 "show tab when more than 1
+let g:airline#extensions#tmuxline#enabled=0 "make sure tmuxline won't tamper
+let g:tmuxline_theme = 'airline'
+
