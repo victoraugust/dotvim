@@ -17,12 +17,7 @@ set ignorecase
 set smartcase
 
 " line numbers
-set number relativenumber
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+set relativenumber
 
 " 80-column rule, select the line `v`, and `gq`
 set textwidth=80
