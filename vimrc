@@ -2,6 +2,10 @@
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 "     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
+" https://github.com/junegunn/fzf, by running following command, there is no
+" need to install fzf via HomeBrew anymore.
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plug 'junegunn/fzf.vim'
 " https://github.com/lervag/vimtex
 Plug 'lervag/vimtex'
 " https://github.com/vim-airline/vim-airline
@@ -45,4 +49,15 @@ let g:airline#extensions#tabline#enabled=1 "allow showing tab
 let g:airline#extensions#tabline#buffer_min_count=2 "show tab when more than 1
 let g:airline#extensions#tmuxline#enabled=0 "make sure tmuxline won't tamper
 let g:tmuxline_theme = 'airline'
+
+
+" FZF and Ripgrep
+nmap <c-p> :GFiles<CR>
+nmap ; :Buffers<CR>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
